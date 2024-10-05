@@ -1,5 +1,5 @@
 import React from 'react';
-import himg from './wimg.jpg';
+import himg from './wimg2.webp';
 import { Link } from 'react-router-dom';
 
 const Home = () => {

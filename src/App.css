@@ -9,7 +9,7 @@ body, html {
 }
 /* Nav */
 .nav {
-  background-color: #b43d3d;
+  background-color: #f46b6b;
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -81,7 +81,7 @@ body, html {
   padding: 20px;
 }
 .fbtn {
-  background-color: hwb(259 18% 18%);
+  background-color: hwb(126 43% 15%);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -98,11 +98,13 @@ body, html {
   margin-bottom: 15px;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  color: #fff;
 }
 .sub {
   font-size: 24px;
   font-weight: 300;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  color:#d16969;
 }
 @media (max-width: 768px) {
   .main {

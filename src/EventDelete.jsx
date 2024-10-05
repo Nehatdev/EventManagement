@@ -16,7 +16,6 @@ export const EventDelete = () => {
             console.error('Error', error);
         }
     };
-    
     const handleDelete = async () => {
         try {
             await axios.delete(`http://localhost:5000/events/${id}`);
@@ -25,7 +24,6 @@ export const EventDelete = () => {
             console.error('Error', error);
         }
     };
-
     useEffect(() => {
         fetchData();
     }, [id]);
@@ -41,5 +39,4 @@ export const EventDelete = () => {
         </section>
     );
 };
-
 export default EventDelete;

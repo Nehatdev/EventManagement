@@ -10,7 +10,7 @@ export const EventDelete = () => {
 
     const fetchData = async () => {
         try {
-            const eventResponse = await axios.get(`http://localhost:5000/events/${id}`); // Full URL
+            const eventResponse = await axios.get(`http://localhost:5000/events/${id}`); 
             setEvent(eventResponse.data);
         } catch (error) {
             console.error('Error', error);

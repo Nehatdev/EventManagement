@@ -5,7 +5,7 @@ import './App.css';
  const Customer = () => {
     const [users, setUsers] = useState([]);
     useEffect(() => {
-        axios.get('http://localhost:5000/users')
+        axios.get('http://localhost:5000/users') 
         .then(response => {
             console.log('Users', response.data); 
             setUsers(response.data);

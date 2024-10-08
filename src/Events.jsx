@@ -17,12 +17,10 @@ const Events = () => {
     try {
       let response = await axios.get('http://localhost:5000/events');
       console.log(response.data);
-      
-      // Check if response.data is an array
       if (Array.isArray(response.data)) {
         setEvents(response.data);
       } else {
-        setEvents([]);  // If no events found or invalid response, set empty array
+        setEvents([]);
       }
     } catch (error) {
       console.error('Error fetching events:', error);

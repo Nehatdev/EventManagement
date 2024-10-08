@@ -18,9 +18,14 @@ const Events = () => {
       let response = await axios.get('http://localhost:5000/events');
       console.log(response.data);
       
-      setEvents(response.data);
+      // Check if response.data is an array
+      if (Array.isArray(response.data)) {
+        setEvents(response.data);
+      } else {
+        setEvents([]);  // If no events found or invalid response, set empty array
+      }
     } catch (error) {
-      console.error('Error', error);
+      console.error('Error fetching events:', error);
     }
   };
 
@@ -65,7 +70,9 @@ const Events = () => {
             </div>
           ))
         ) : (
-          <div style={{ fontSize: '28px', color: 'gainsboro', fontWeight: 'bold' }}>No Events Found</div>
+          <div style={{ fontSize: '28px', color: 'gainsboro', fontWeight: 'bold' }}>
+            No Events Found
+          </div>
         )}
       </div>
     </section>

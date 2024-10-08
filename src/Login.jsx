@@ -25,7 +25,7 @@ export const Login = () => {
     setLoading(true);
 
     if (formData.email === 'admin@gmail.com' && formData.password === 'admin') {
-      window.alert('Admin Login Success');
+      console.log('Admin Login Success');
       localStorage.setItem('id', 'adminId');
       localStorage.setItem('userType', 'admin');
       navigate('/adminpage');
@@ -49,6 +49,8 @@ export const Login = () => {
 
       } else {
         setError(response.data.message || 'Login failed.');
+        console.log('Login failed');
+        
       }
     } catch (err) {
       console.error('Login error:', err);

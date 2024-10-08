@@ -11,7 +11,7 @@ const Adminpage = () => {
    <div>
       <div className='nav'>
         <div className='head'>
-          <h1>Event </h1>
+          <h1>Festy </h1>
         </div>
         <div className='list'>
           <Link to='/adminpage/eventhandle'>Events</Link>

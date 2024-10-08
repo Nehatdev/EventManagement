@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './App.css';
 
@@ -8,24 +7,30 @@ const Booking = () => {
     const { id } = useParams(); 
     const userId = localStorage.getItem('id');
     const navigate = useNavigate();
+
     const [eventDetails, setEventDetails] = useState({
         name: '',
         category: '',
         organizer: ''
     });
+
     const [formData, setFormData] = useState({
         name: '', 
         email: '',
         phoneNumber: '',
         place: ''
     });
+
+    const [error, setError] = useState(''); 
+    const [loading, setLoading] = useState(false); 
+
     useEffect(() => {
         const fetchEventDetails = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/events/${id}`);
                 setEventDetails(response.data);
             } catch (error) {
-                console.error('Error', error);
+                console.error('Error fetching event details:', error);
             }
         };
         fetchEventDetails();
@@ -38,10 +43,12 @@ const Booking = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        setLoading(true);
+        setError('');
+
         try {
             const response = await axios.post('http://localhost:5000/eventbookings', {
                 eventId: id,
-                eventName: eventDetails.name,
                 name: formData.name, 
                 email: formData.email,
                 phoneNumber: formData.phoneNumber,
@@ -53,8 +60,15 @@ const Booking = () => {
             window.alert('Booking successful!');
             navigate('/customerpage/events');
         } catch (error) {
-            console.error('Error', error);
-            window.alert('Booking failed. Please try again.');
+            console.error('Error booking event:', error);
+
+            if (error.response && error.response.status === 409) {
+                setError(error.response.data.message);
+            } else {
+                setError('Booking failed. Please try again.');
+            }
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -73,10 +87,11 @@ const Booking = () => {
                         type="text" 
                         id="name" 
                         name="name" 
-                        placeholder='Name'
+                        placeholder="Your Name"
                         value={formData.name} 
                         onChange={handleFormChange} 
                         required 
+                        disabled={loading}
                     />
                 </div>
                 <div className="form-group">
@@ -85,10 +100,11 @@ const Booking = () => {
                         type="email" 
                         id="email" 
                         name="email" 
-                        placeholder='email'
+                        placeholder="Your Email"
                         value={formData.email} 
                         onChange={handleFormChange} 
                         required 
+                        disabled={loading}
                     />
                 </div>
                 <div className="form-group">
@@ -97,10 +113,11 @@ const Booking = () => {
                         type="text" 
                         id="phoneNumber" 
                         name="phoneNumber" 
-                        placeholder='phoneNumber'
+                        placeholder="Your Phone Number"
                         value={formData.phoneNumber} 
                         onChange={handleFormChange} 
                         required 
+                        disabled={loading}
                     />
                 </div>
                 <div className="form-group">
@@ -109,14 +126,19 @@ const Booking = () => {
                         type="text" 
                         id="place" 
                         name="place" 
-                        placeholder='place'
+                        placeholder="Your Place"
                         value={formData.place} 
                         onChange={handleFormChange} 
                         required 
+                        disabled={loading}
                     />
                 </div>
-                <button type="submit">Book Now</button>
+                <button type="submit" disabled={loading}>
+                    {loading ? 'Booking...' : 'Book Now'}
+                </button>
             </form>
+
+            {error && <p className="error-message">{error}</p>}
         </div>
     );
 };

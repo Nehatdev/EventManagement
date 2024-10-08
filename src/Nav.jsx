@@ -15,7 +15,7 @@ const Nav = () => {
     <>
       <div className='nav'>
         <div className='head'>
-          <h1>Events</h1>
+          <h1>Festy</h1>
         </div>
 
         <div className='list'>

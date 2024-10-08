@@ -12,7 +12,7 @@ const Customerpage = () => {
     <div>
        <div className='nav'>
          <div className='head'>
-           <h1> Events </h1>
+           <h1> Festy</h1>
          </div>
          <div className='list'>
            <Link to='/customerpage/eventform'>Create</Link>

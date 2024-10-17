@@ -17,6 +17,7 @@ import Booking from './Booking';
 import EventHandle from './EventHandle';
 import EventDelete from './EventDelete';
 import Customer from './Customer';
+import HEvents from './HEvents';
 
 function App() {
   return (
@@ -26,10 +27,10 @@ function App() {
           <Routes>
             <Route path='/' element={<Nav />}>
               <Route index element={<Home />} />
-              <Route path="/events" element={<Events />} />
+              <Route path='/homeevents' element={<HEvents />} />
               <Route path='/about' element={<About />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Register />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/register' element={<Register />} />
             </Route>
             <Route path='/adminpage' element={<Adminpage />}>
               <Route index element={<EventHandle />} />

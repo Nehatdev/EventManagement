@@ -23,7 +23,7 @@ const Profile = () => {
 
   useEffect(() => {
     if (!id || !token) {
-      setError('User ID or token is missing. Please log in again.');
+      setError('. Please login again.');
       navigate('/login');
       return;
     }

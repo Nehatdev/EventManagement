@@ -21,7 +21,7 @@ const Nav = () => {
         <div className='list'>
           <Link to='/'>Home</Link>
           <Link to='/about'>AboutUs</Link>
-          <Link to='/events'>Events</Link>
+          <Link to='/homeevents'>Events</Link>
           {!user.name ? (
             <>
               <Link to='/login'>Login</Link>

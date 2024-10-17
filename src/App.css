@@ -509,7 +509,7 @@ h3 {
   border-bottom: 1px solid #211a1a;
 }
 .admin-table tbody tr:nth-child(even) {
-  background-color: #4c4242;
+  background-color: #cebfbf;
 }
 .admin-table tbody tr:hover {
   background-color: #f1f1f1;
